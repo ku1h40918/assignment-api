@@ -11,41 +11,6 @@
 - PostgreSQL
 - HTML / JavaScript
 
-## 起動方法
-
-1. PostgreSQLでデータベースを作成します。
-
-```sql
-CREATE DATABASE assignment_db;
-```
-
-2. `assignment_db` に接続し、テーブルを作成します。
-
-```sql
-CREATE TABLE assignments (
-    id BIGSERIAL PRIMARY KEY,
-    title VARCHAR(200) NOT NULL,
-    content TEXT NOT NULL,
-    due_date DATE NOT NULL,
-    completed BOOLEAN NOT NULL DEFAULT FALSE,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-```
-
-3. IntelliJの実行構成に環境変数を設定します。
-
-| 環境変数 | 設定値 |
-|---|---|
-| DATABASE_HOST | localhost |
-| DATABASE_PORT | 5432 |
-| DATABASE_NAME | assignment_db |
-| DATABASE_USER | PostgreSQLのユーザー名 |
-| DATABASE_PASSWORD | PostgreSQLのパスワード |
-
-4. Mavenの依存関係を読み込み、Lombokのアノテーション処理を有効にします。
-5. `AssignmentApiApplication` を実行します。
-6. ブラウザで http://localhost:8080/ を開きます。
-
 ## API一覧
 
 | 機能 | メソッド | URL |
@@ -57,17 +22,6 @@ CREATE TABLE assignments (
 | 更新 | PUT | /api/assignments/{id} |
 
 一覧は締切日が近い順に表示します。
-
-## 登録・更新のJSON例
-
-```json
-{
-  "title": "WebAPIの課題",
-  "content": "課題管理アプリを完成させる",
-  "dueDate": "2026-11-10",
-  "completed": false
-}
-```
 
 ## エラー処理
 
