@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課題管理アプリ</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .assignment-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .error { color: red; font-weight: bold; }
+        label { display: block; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<h1>課題管理アプリ</h1>
+
+<div id="error-message" class="error" role="alert"></div>
+
+<h2>1. 課題の登録・更新</h2>
+<form id="create-form">
+    <label>
+        課題名
+        <input type="text" id="title" maxlength="200" required>
+    </label>
+    <label>
+        詳細
+        <textarea id="content" required></textarea>
+    </label>
+    <label>
+        締切日
+        <input type="date" id="due-date" required>
+    </label>
+    <label>
+        <input type="checkbox" id="completed">
+        完了
+    </label>
+    <button type="submit">新規登録</button>
+    <button type="button" onclick="updateAssignment()">
+        指定したIDの課題を更新
+    </button>
+</form>
+
+<hr>
+
+<h2>2. 課題一覧</h2>
+<button onclick="fetchAssignments()">一覧を更新</button>
+<div id="assignments-list"></div>
+
+<hr>
+
+<h2>3. 個別課題操作</h2>
+<label>
+    課題ID
+    <input type="number" id="assignment-id" min="1" step="1">
+</label>
+<button onclick="fetchAssignmentById()">検索・フォームに読み込む</button>
+<button onclick="deleteAssignment()">削除</button>
+<p>更新する場合は、IDで検索してからフォームを編集し、更新ボタンを押してください。</p>
+
+<script src="app.js"></script>
+</body>
+</html>
